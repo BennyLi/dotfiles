@@ -1,0 +1,3 @@
+#!/bin/sh
+
+vboxmanage controlvm "Windows 7 Ultimate x64" pause

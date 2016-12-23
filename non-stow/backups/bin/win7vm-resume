@@ -1,0 +1,7 @@
+#!/bin/sh
+CURRENT_VM_STATE="$(win7vm-state)"
+if [ "$CURRENT_VM_STATE" != "paused" ] && [ "$CURRENT_VM_STATE" != "running" ]; then
+	win7vm-start
+else
+	vboxmanage controlvm "Windows 7 Ultimate x64" resume
+fi

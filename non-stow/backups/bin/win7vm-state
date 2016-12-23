@@ -1,0 +1,3 @@
+#!/bin/sh
+
+vboxmanage showvminfo "Windows 7 Ultimate x64" --machinereadable | grep VMState= | cut -d '"' -f2
