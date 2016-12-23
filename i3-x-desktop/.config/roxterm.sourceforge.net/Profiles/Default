@@ -1,0 +1,12 @@
+[roxterm profile]
+font=Monospace 9
+full_screen=0
+maximise=1
+hide_menubar=1
+show_add_tab_btn=0
+colour_scheme=Tango
+saturation=0.950139
+always_show_tabs=0
+scroll_on_output=0
+scroll_on_keystroke=1
+term=xterm-256color
