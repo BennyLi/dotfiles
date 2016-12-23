@@ -37,7 +37,7 @@ set $ws_keepass "10: &#xf023;"
 set $mod Mod4
 floating_modifier $mod
 
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8, Material Design Icons 8
 
 
 ### LAYOUT
@@ -53,20 +53,20 @@ font pango:DejaVu Sans Mono 8
 #set $child_border       404552
 
 ### AVIATAR Color Scheme
-set $background         2f343f 
-set $textcolor          EEEEEE 
+set $background         2f343f
+set $textcolor          EEEEEE
 # Dark Grey
-set $textcolor_unfo     B2BABD 
+set $textcolor_unfo     B2BABD
 # Signal Blue
 set $border_focused     609ACF
 # Signal Red
-set $border_urgent      FF505A 
+set $border_urgent      FF505A
 # Orange
-set $border_placeh      FFAB00 
+set $border_placeh      FFAB00
 # Signal Blue
-set $indicator          09ACF8 
+set $indicator          09ACF8
 # Background Color
-set $child_border       2f343f 
+set $child_border       2f343f
 
 #			            border              backgr.         text                indicator       child_border
 client.focused		    #$border_focused    #$background    #$textcolor         #$indicator     #$child_border
@@ -196,7 +196,7 @@ bindsym $mod+r mode "resize"
 # TODO Build shutdown / lockout / lock menu
 #
 #bindsym $mod+Alt+l exec i3lock --color=$background -e -f
-bindsym $mod+p exec i3lock-fancy -t ""
+bindsym $mod+p exec i3lock-fancy -t "" -i ""
 
 # choose external monitor
 set $monitormenu "Choose Monitor Output: [i]nteral only, [h]dmi above internal, [v]ga above internal, [m]ulti external above internal, [b]ackground reset"
@@ -263,9 +263,8 @@ assign [class="^Keepassx"] $ws_keepass
 # finds out, if available)
 exec xrandr --output $internal --auto --output $vga --off
 bar {
-        # TODO use i3blocks or lemonbar?
         # http://kumarcode.com/Adding-Weather-and-Gmail-info-to-my-i3-Status/
-        status_command i3status
+        status_command i3blocks
 }
 
 
