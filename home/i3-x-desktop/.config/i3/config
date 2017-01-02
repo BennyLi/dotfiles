@@ -2,7 +2,6 @@
 
 #####  CONSTANTS  #####
 set $set_background feh --randomize --bg-fill ~/Pictures/Wallpaper/tech/*
-#set $set_background feh --bg-scale /home/bln/Pictures/Wallpaper/countless_starry_lake_nghts-1600x900.jpg
 
 # Monitors
 set $internalmonitor  LVDS1
@@ -10,7 +9,7 @@ set $externalmonitor  HDMI1
 set $externalmonitor2 VGA1
 
 # Terminal
-set $ws_terminal "1: "
+set $ws_terminal "1: "
 # Browser
 set $ws_browser "2: "
 # Mail and Communication
@@ -37,7 +36,8 @@ set $ws_keepass "10: "
 set $mod Mod4
 floating_modifier $mod
 
-font pango:DejaVu Sans Mono 8, Material Design Icons 8
+# Icons: https://cdn.materialdesignicons.com/1.7.22/
+font pango:Material Design Icons 10, DejaVu Sans Mono 8
 
 
 ### LAYOUT
@@ -165,6 +165,19 @@ bindsym $mod+Shift+8 move container to workspace $ws_winvm
 bindsym $mod+Shift+9 move container to workspace $ws_notes
 bindsym $mod+Shift+0 move container to workspace $ws_keepass
 
+# move workspace to monitor
+set $movetomonitormenu "Move workspace to [i]nternal, [h]dmi, [v]ga monitor"
+mode $movetomonitormenu {
+  bindsym i exec "i3-msg move workspace to output $internalmonitor", mode "default"
+  bindsym h exec "i3-msg move workspace to output $externalmonitor", mode "default"
+  bindsym v exec "i3-msg move workspace to output $externalmonitor2", mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+m mode $movetomonitormenu
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -194,9 +207,18 @@ bindsym $mod+r mode "resize"
 #####  CUSTOM KEYBINDINGS  ######
 
 # TODO Build shutdown / lockout / lock menu
-#
-#bindsym $mod+Alt+l exec i3lock --color=$background -e -f
-bindsym $mod+p exec i3lock-fancy -t "" -i ""
+set $shutdownmenu "[l]ock, [r]eboot, [h]ibernate, [s]hutdown"
+mode $shutdownmenu {
+  bindsym l exec i3lock-fancy -t "", mode "default"
+  bindsym r exec "i3-nagbar -t warning -m 'Reboot?' -b 'Yes' 'reboot'", mode "default"
+  bindsym s exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes' 'reboot'", mode "default"
+  bindsym h exec i3lock-fancy -t "" && systemctl hybrid-sleep, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+s mode $shutdownmenu
 
 # choose external monitor
 set $monitormenu "Choose Monitor Output: [i]nteral only, [h]dmi above internal, [v]ga above internal, [m]ulti external above internal, [b]ackground reset"
@@ -205,11 +227,11 @@ mode $monitormenu {
 	bindsym v exec xrandr --output $internalmonitor --primary --auto --output $externalmonitor2 --above $internalmonitor --auto, exec $set_background, mode "default"
 	bindsym m exec xrandr --output $internalmonitor --primary --auto --output $externalmonitor --above $internalmonitor --auto --output $externalmonitor2 --left-of $externalmonitor --auto, exec $set_background, mode "default"
 	bindsym i exec xrandr --output $internalmonitor --auto --output $externalmonitor --off --output $externalmonitor2 --off, exec $set_background, mode "default"
-    bindsym b exec $set_background, mode "default"
+  bindsym b exec $set_background, mode "default"
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 bindsym $mod+m mode $monitormenu
 
@@ -257,14 +279,12 @@ workspace $ws_db output $internalmonitor
 
 assign [class="^Keepassx"] $ws_keepass
 
+
 ######  AUTOSTART  ######
 
-# Start i3bar to display a $workspacebar (plus the system information i3status
-# finds out, if available)
-exec xrandr --output $internal --auto --output $vga --off
 bar {
-        # http://kumarcode.com/Adding-Weather-and-Gmail-info-to-my-i3-Status/
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  # http://kumarcode.com/Adding-Weather-and-Gmail-info-to-my-i3-Status/
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 
@@ -281,6 +301,11 @@ exec synology-cloud-station-drive
 exec keepassx2 -style=gtk
 
 exec i3-msg 'workspace $ws_mail; layout tabbed'
+exec i3-msg 'workspace $ws_browser; layout tabbed'
+exec i3-msg 'workspace $ws_notes; exec synology-note-station'
 
+# Desktop transistions and transparency
 exec compton -f --fade-delta=10 --inactive-dim 0.2
+
+# Desktop notifications
 exec dunst
