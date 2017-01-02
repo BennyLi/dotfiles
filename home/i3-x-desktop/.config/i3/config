@@ -10,25 +10,25 @@ set $externalmonitor  HDMI1
 set $externalmonitor2 VGA1
 
 # Terminal
-set $ws_terminal "1: &#xf120;"
+set $ws_terminal "1: "
 # Browser
-set $ws_browser "2: &#xf268;"
+set $ws_browser "2: "
 # Mail and Communication
-set $ws_mail "3: &#xf0e0;"
+set $ws_mail "3: "
 # Development Database
-set $ws_db "4: &#xf1c0;"
+set $ws_db "4: "
 # Development IDE
-set $ws_dev "5: &#xf121;"
+set $ws_dev "5: "
 # Frontend Development
-set $ws_dev_front "6: &#xf13b;"
+set $ws_dev_front "6: "
 # Business (iteratec)
-set $ws_business "7: &#xf27e;"
+set $ws_business "7: "
 # Windows VM
-set $ws_winvm "8: &#xf17a;"
+set $ws_winvm "8: "
 # Notes
-set $ws_notes "9: &#xf24a;"
+set $ws_notes "9: "
 # Keepass
-set $ws_keepass "10: &#xf023;"
+set $ws_keepass "10: "
 
 
 
@@ -264,7 +264,7 @@ assign [class="^Keepassx"] $ws_keepass
 exec xrandr --output $internal --auto --output $vga --off
 bar {
         # http://kumarcode.com/Adding-Weather-and-Gmail-info-to-my-i3-Status/
-        status_command i3blocks
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 
