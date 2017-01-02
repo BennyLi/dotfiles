@@ -15,10 +15,11 @@ rm -rf /tmp/Super-Ultra-Flat-Numix-Remix
 # Fonts
 yaourt -S system-san-francisco-font-git ttf-material-design-icons-git
 
-cd /tmp
-git clone https://github.com/FortAwesome/Font-Awesome
-sudo cp Font-Awesome/fonts/fontawesome-webfont.ttf /usr/share/fonts/TTF/
-rm -rf Font-Awesome
+# Using MaterialDesignIcons (see above)
+#cd /tmp
+#git clone https://github.com/FortAwesome/Font-Awesome
+#sudo cp Font-Awesome/fonts/fontawesome-webfont.ttf /usr/share/fonts/TTF/
+#rm -rf Font-Awesome
 
 
 # Transition effect

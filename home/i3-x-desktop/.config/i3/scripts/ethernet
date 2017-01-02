@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# If ethernet is connected, show symbol as green.
+# If it's not connected, show it as red. If it's dormant, show as yellow.
+
+eth_state="$(cat /sys/class/net/eno1/operstate)"
+
+ip_addr=`ifconfig eno1 | grep 'inet' | xargs | cut -d' ' -f 2 `
+current_mac=`ifconfig eno1 | grep ether | xargs | cut -d' ' -f2`
+
+if [[ "$eth_state" == "up" ]]; then
+        echo ": $ip_addr"
+        echo ""
+elif [[ "$eth_state" == "dormant" ]]; then
+        echo ""
+        echo ""
+        echo "#DC322F"
+fi
+
+if [[ $BLOCK_BUTTON == '1' ]]; then
+        notify-send "`echo -e IP: $ip_addr'\n'MAC: $current_mac`"\
+                -i /usr/share/icons/Numix-Circle/48x48/apps/networkmanager.svg
+fi

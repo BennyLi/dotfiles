@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# If WiFi is connected, show the WiFi symbol as green.
+# If it's disconnected, show it as red. If dormannt, as yellow.
+
+if ! [ -f /sys/class/net/wlp2s0/operstate ]; then
+        exit 0
+fi
+wlan_state="$(cat /sys/class/net/wlp2s0/operstate)"
+LOCAL_IP=`ifconfig wlp2s0 | grep 'inet' | xargs | cut -d' ' -f 2`
+
+if [[ $BLOCK_BUTTON == '1' ]]; then
+        SSID=`iwconfig wlp2s0 | grep "ESSID" | cut -d ":" -f2`
+        FREQ=`iwconfig wlp2s0 | grep Frequency | cut -d 'G' -f1 | \
+                cut -d ':' -f3`
+        notify-send "`echo -e 'SSID: ' $SSID'\nFrequency: ' $FREQ'\nLocal IP: '$LOCAL_IP`" \
+                -i /usr/share/icons/Numix-Circle/48x48/apps/networkmanager.svg
+fi
+if [[ $BLOCK_BUTTON == '4' ]] | [[ $BLOCK_BUTTON == '5' ]]; then
+        notify-send "`echo $(macchanger wlan0 -s)`" \
+                -i /usr/share/icons/Numix-Circle/48x48/apps/networkmanager.svg
+fi
+
+if [ "$wlan_state" = "up" ]; then
+        echo ": $LOCAL_IP"
+        echo ""
+        exit 0
+elif [ "$wlan_state" = "down" ]; then
+        echo ""
+        echo ""
+        echo "#DC322F"
+        exit 0
+elif [ "$wlan_state" = "dormant" ]; then
+        echo ": $LOCAL_IP"
+        echo ""
+        echo "#F99157"
+        exit 0
+fi
