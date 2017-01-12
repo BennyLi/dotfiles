@@ -1,0 +1,3 @@
+[submodule "inspirations/walshc-i3"]
+	path = inspirations/walshc-i3
+	url = https://github.com/walshc/i3

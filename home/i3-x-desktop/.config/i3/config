@@ -1,6 +1,9 @@
 # i3 config file (v4)
 
 #####  CONSTANTS  #####
+set $mod Mod4
+floating_modifier $mod
+
 set $set_background feh --randomize --bg-fill ~/Pictures/Wallpaper/tech/*
 
 # Monitors
@@ -30,27 +33,11 @@ set $ws_notes "9: "
 set $ws_keepass "10: "
 
 
-
-
-
-set $mod Mod4
-floating_modifier $mod
-
-# Icons: https://cdn.materialdesignicons.com/1.7.22/
-font pango:Material Design Icons 10, DejaVu Sans Mono 8
-
-
 ### LAYOUT
 # Color Palette: http://paletton.com/#uid=63k0u0k18O17rzm4NFO2nx-35tf
 
-#set $background         404552
-#set $textcolor          EEEEEE
-#set $textcolor_unfo     999999
-#set $border_focused     808D8E
-#set $border_urgent      E3B09F
-#set $border_placeh      B0E39F
-#set $indicator          9CCCA2
-#set $child_border       404552
+# Icons: https://cdn.materialdesignicons.com/1.7.22/
+font pango:Material Design Icons 10, DejaVu Sans Mono 8
 
 ### AVIATAR Color Scheme
 set $background         2f343f
@@ -265,14 +252,14 @@ workspace $ws_terminal output $externalmonitor
 # Mails and communication on the internal screen
 workspace $ws_mail output $internalmonitor
 assign [class="^Thunderbird"] $ws_mail
-#assign [class="^vivaldi" title="((?!Outlook Web App))"] floating enable
+assign [class="^Evolution"] $ws_mail
+assign [class="^Slack"] $ws_mail
 
-# Musik on its own interal monitor worksapce
-workspace $ws_winvm output $internalmonitor
-assign [class="^vivaldi" instance="^app.napster.com"] $ws_winvm
 # Development should happen on the big screen
 workspace $ws_dev output $externalmonitor
 assign [class="^Eclipse"] $ws_dev
+assign [class="^jetbrains-idea-ce"] $ws_dev
+
 # ... but SQL on the internal to see both
 workspace $ws_db output $internalmonitor
 
@@ -285,6 +272,9 @@ assign [class="^Keepassx"] $ws_keepass
 bar {
   # http://kumarcode.com/Adding-Weather-and-Gmail-info-to-my-i3-Status/
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  tray_output $externalmonitor
+  tray_output $externalmonitor2
+  tray_output $internalmonitor
 }
 
 

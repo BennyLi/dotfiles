@@ -9,11 +9,12 @@ ip_addr=`ifconfig eno1 | grep 'inet' | xargs | cut -d' ' -f 2 `
 current_mac=`ifconfig eno1 | grep ether | xargs | cut -d' ' -f2`
 
 if [[ "$eth_state" == "up" ]]; then
-        echo ": $ip_addr"
-        echo ""
+        echo "<span size='large'></span>"
+        echo "<span size='large'></span>"
+        echo "#21A3A3"
 elif [[ "$eth_state" == "dormant" ]]; then
-        echo ""
-        echo ""
+        echo "<span size='large'></span>"
+        echo "<span size='large'></span>"
         echo "#DC322F"
 fi
 

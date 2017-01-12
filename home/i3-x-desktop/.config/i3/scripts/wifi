@@ -22,17 +22,18 @@ if [[ $BLOCK_BUTTON == '4' ]] | [[ $BLOCK_BUTTON == '5' ]]; then
 fi
 
 if [ "$wlan_state" = "up" ]; then
-        echo ": $LOCAL_IP"
-        echo ""
+        echo "<span size='large'></span>"
+        echo "<span size='large'></span>"
+        echo "#21A3A3"
         exit 0
 elif [ "$wlan_state" = "down" ]; then
-        echo ""
-        echo ""
+        echo "<span size='large'></span>"
+        echo "<span size='large'></span>"
         echo "#DC322F"
         exit 0
 elif [ "$wlan_state" = "dormant" ]; then
-        echo ": $LOCAL_IP"
-        echo ""
+        echo "<span size='large'></span>"
+        echo "<span size='large'></span>"
         echo "#F99157"
         exit 0
 fi
