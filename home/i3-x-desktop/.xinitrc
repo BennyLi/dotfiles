@@ -3,4 +3,5 @@ eval $(ssh-agent)
 
 PATH="$PATH:$HOME/bin"
 
+setxkbmap de
 exec i3
