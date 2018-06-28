@@ -1,2 +1,0 @@
-#!/bin/sh
-playonlinux --run "PDFXEdit" "$1"

@@ -1,4 +1,0 @@
-# Defaults preserve proxy settings
-Defaults env_keep += "http_proxy"
-Defaults env_keep += "https_proxy"
-
