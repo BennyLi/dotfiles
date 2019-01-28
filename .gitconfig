@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Benny Li
+	email = dev@benny-li.de
+
+[alias]
+	s = status
+	ls = log --decorate=short --oneline --graph
+	p = pull -r
+	ss = stash save
+	sp = stash pop
