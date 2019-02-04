@@ -16,6 +16,7 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run
+bindsym $mod+n exec /usr/local/bin/rofi-network-select.sh
 
 # change focus (vim style)
 bindsym $mod+j focus down
