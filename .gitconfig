@@ -4,8 +4,9 @@
 	email = dev@benny-li.de
 
 [alias]
-	s = status
-	ls = log --decorate=short --oneline --graph
 	p = pull -r
+	ls = log --decorate=short --oneline --graph
+	s = status
+	ds = diff --staged
 	ss = stash save
 	sp = stash pop
