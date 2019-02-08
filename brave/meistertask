@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+brave --app="https://meistertask.com/app"
