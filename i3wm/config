@@ -10,6 +10,7 @@ font pango:SauceCodePro Nerd Font Mono 8
 
 gaps inner 10
 #gaps outer 5
+default_border none
 
 floating_modifier $mod
 
@@ -128,3 +129,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id nextcloud
