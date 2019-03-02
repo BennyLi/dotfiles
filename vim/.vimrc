@@ -1,22 +1,43 @@
 " General settings {{{1
-let mapleader=','
+nnoremap <SPACE> <Nop>
+let mapleader=' '
 
 set number
+set nocompatible
+filetype plugin on
+syntax on
 
 " Folding {{{2
 set foldenable
 set foldmethod=marker
-nnoremap <space> za
+nnoremap <leader><space> za
 
 " Plugin configuration {{{1
 call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/lightline.vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'pearofducks/ansible-vim'
 Plug 'chr4/nginx.vim'
 
+Plug 'airblade/vim-gitgutter'
+
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
+
+" Plugin config for: lightline {{{2
+set laststatus=2
+
+" Plugin config for: vimwiki {{{2
+let wiki_1 = {}
+let wiki_1.path = '~/Documents/nc-familie/'
+let wiki_1.syntax = 'markdown'
+let wiki_1.ext = '.md'
+let g:vimwiki_list = [wiki_1]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 " Plugin config for: CtrlP {{{2
 " Setup some default ignores
