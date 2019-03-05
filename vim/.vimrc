@@ -41,6 +41,16 @@ let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 let g:taskwiki_markup_syntax = 'markdown'
+let g:taskwiki_sort_orders = {'T':'<next>'}
+
+function! TaskwarriorSync()
+  let syncresult = system("task sync")
+  split __Taskwarrior_Sync__
+  normal! ggdG
+  setlocal buftype=nofile
+  call append(0, split(syncresult, '\v\n'))
+endfunction
+nnoremap <leader>tws :call TaskwarriorSync()<CR>
 
 " Plugin config for: CtrlP {{{2
 " Setup some default ignores
