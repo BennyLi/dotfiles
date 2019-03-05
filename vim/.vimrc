@@ -25,6 +25,7 @@ Plug 'chr4/nginx.vim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'vimwiki/vimwiki'
+Plug 'tbabej/taskwiki'
 
 call plug#end()
 
@@ -38,6 +39,8 @@ let wiki_1.syntax = 'markdown'
 let wiki_1.ext = '.md'
 let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
+let g:taskwiki_markup_syntax = 'markdown'
 
 " Plugin config for: CtrlP {{{2
 " Setup some default ignores
