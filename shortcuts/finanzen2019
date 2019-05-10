@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+/usr/local/bin/textmaker18 "$HOME/Documents/syno-shared/Finanzen/Ausgaben im Jahr 2019.docx"
