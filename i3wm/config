@@ -21,6 +21,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run
 bindsym $mod+n exec /usr/local/bin/rofi-network-select.sh
+bindsym $mod+m exec /usr/local/bin/rofi-mount-usb-device.sh
 
 # change focus (vim style)
 bindsym $mod+j focus down
@@ -119,7 +120,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id nextcloud
 
 # Scratchpads {{{1
 ## Keepass {{{2
@@ -130,7 +130,13 @@ bindsym $mod+p [class="keepassxc"] scratchpad show
 ## Taskwarrior {{{2
 exec --no-startup-id termite -t Tasks -r "Task Management" -e tasksh
 for_window [title="Tasks" window_role="Task Management"] move scratchpad
-bindsym $mod+t [title="Tasks" window_role="Task Management"] scratchpad show; fullscreen enable
+bindsym $mod+t [title="Tasks" window_role="Task Management"] scratchpad show; resize set 1700 900; move absolute position center
+## Ranger {{{2
+exec --no-startup-id termite -t "File Manager" -r "File Manager" -e ranger
+for_window [title="File Manager" window_role="File Manager"] move scratchpad
+bindsym $mod+F1 [title="File Manager" window_role="File Manager""] scratchpad show; fullscreen enable
 
+# Autostart {{{1
 exec --no-startup-id compton -b
 exec_always --no-startup-id sh ~/.fehbg
+exec_always --no-startup-id synology-drive
