@@ -1,0 +1,17 @@
+#! /usr/bin/env sh
+
+if [ "$#" != "1" ]; then
+  echo "Usage: $0 /path/to/your/pictures/library"
+  echo
+  echo "Will setup shotwell to store its database in a subfolder of your library called '.shotwell' and adjust the import path to fit your library path"
+  exit 1
+fi
+
+command -v realpath >/dev/null 2>&1 || { echo >&2 "Please install realpath so we can automatically resolve relative paths."; exit 2; }
+
+
+SHOTWELL_LIBRARY_PATH="$(realpath $1)"
+
+gsettings set org.yorba.shotwell.preferences.files import-dir "$SHOTWELL_LIBRARY_PATH"
+
+shotwell -d "$SHOTWELL_LIBRARY_PATH/.shotwell"
