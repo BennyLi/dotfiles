@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+qutebrowser --target window https://cloud.familienunternehmen-lindemann.de
