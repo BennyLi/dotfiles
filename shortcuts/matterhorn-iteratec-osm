@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+/usr/bin/termite --title="Mattermost OSM" --exec='sh -c "/usr/bin/docker run -it --rm -e TZ=Europe/Berlin -v ~/.config/matterhorn/config-iteratec-osm.ini:/etc/matterhorn/config.ini bennyli/matterhorn"'
