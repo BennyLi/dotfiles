@@ -5,8 +5,23 @@
 # CONSTANTS {{{1
 set $mod Mod4
 
-# Workspaces {{{2
+# Color Scheme - Nord https://www.nordtheme.com/docs/colors-and-palettes {{{2
+set $background         2E3440
+set $textcolor          ECEFF4
+# Dark Grey
+set $textcolor_unfo     B2BABD
+# Signal Blue
+set $border_focused     A3BE8C
+# Signal Red
+set $border_urgent      BF616A
+# Orange
+set $border_placeh      D08770
+# Signal Blue
+set $indicator          88C0D0
+# Background Color
+set $child_border       4C566A
 
+# Workspaces {{{2
 # Terminal {{{3
 set $ws_terminal_0 "10:  "
 set $ws_terminal_1 "11:  "
@@ -41,14 +56,16 @@ set $ws_keepass "10:  "
 # Style {{{1
 font pango:Hack Nerd Font 9
 for_window [class="^.*"] border pixel 0
+gaps inner 25
+gaps outer 5
 
-# Colors TODO {{{2
+# Colors {{{2
 #			            border              backgr.         text                indicator       child_border
-#client.focused		    #$border_focused    #$background    #$textcolor         #$indicator     #$child_border
-#client.focused_inactive #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
-#client.unfocused	    #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
-#client.urgent		    #$border_urgent     #$background    #$textcolor         #$indicator     #$child_border
-#client.placeholder	    #$border_placeh     #$background    #$textcolor         #$indicator     #$child_border
+client.focused		    #$border_focused    #$background    #$textcolor         #$indicator     #$child_border
+client.focused_inactive #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
+client.unfocused	    #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
+client.urgent		    #$border_urgent     #$background    #$textcolor         #$indicator     #$child_border
+client.placeholder	    #$border_placeh     #$background    #$textcolor         #$indicator     #$child_border
 
 ## Status bar {{{2
 bar {
