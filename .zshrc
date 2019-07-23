@@ -22,5 +22,9 @@ bindkey -v
 
 
 # History search settings {{{1
-bindkey "[A" history-beginning-search-backward
-bindkey "[B" history-beginning-search-forward
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "[A" up-line-or-beginning-search # Up
+bindkey "[B" down-line-or-beginning-search # Down
