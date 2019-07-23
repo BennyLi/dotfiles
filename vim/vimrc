@@ -42,6 +42,21 @@ call plug#end()
 
 " Plugin config for: lightline {{{2
 set laststatus=2
+let g:lightline={}
+let g:lightline.active = {
+      \ 'left': [ [ 'mode', 'paste' ],
+      \           [ 'readonly', 'relativepath', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ],
+      \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+let g:lightline.inactive = {
+      \ 'left': [ [ 'filename' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ] }
+let g:lightline.tabline = {
+      \ 'left': [ [ 'tabs' ] ],
+      \ 'right': [ [ 'close' ] ] }
+
 
 " Plugin config for: vimwiki {{{2
 let wiki_iteratec = {}
