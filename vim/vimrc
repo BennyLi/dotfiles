@@ -3,13 +3,14 @@ nnoremap <SPACE> <Nop>
 let mapleader=' '
 
 set number
+set cursorline
 set nocompatible
 filetype plugin on
 syntax on
 
 set expandtab
-let shiftwidth=4
-let tabstop=4
+let shiftwidth=2
+let tabstop=2
 set autoindent
 
 " Folding {{{2
@@ -41,11 +42,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 "Plug 'tbabej/taskwiki'
 
+" Colorscheme
+Plug 'arcticicestudio/nord-vim'
+
 call plug#end()
 
 " Plugin config for: lightline {{{2
 set laststatus=2
-let g:lightline={}
+let g:lightline={
+      \ 'colorscheme': 'nord' }
 let g:lightline.active = {
       \ 'left': [ [ 'mode', 'paste' ],
       \           [ 'readonly', 'relativepath', 'modified' ] ],
@@ -105,3 +110,10 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
+" Plugin config for: nord-vim {{{2
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+colorscheme nord
+
