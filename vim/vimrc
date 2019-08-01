@@ -35,6 +35,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Language support
 " > Ansible
 Plug 'pearofducks/ansible-vim'
+" > JavaScript
+Plug 'Quramy/vim-js-pretty-template'
+" > TypeScript
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi' " Completion
+
 
 " Git integration
 Plug 'airblade/vim-gitgutter'
@@ -110,6 +116,11 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
+" Plugin config for: vim-js-pretty-template {{{2
+autocmd FileType typescript JsPreTmpl
+autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only. Please see #1 for details.
+
 
 " Plugin config for: nord-vim {{{2
 let g:nord_cursor_line_number_background = 1
