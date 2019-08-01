@@ -28,11 +28,14 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
-
+Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Language support
+" > Ansible
 Plug 'pearofducks/ansible-vim'
 
+" Git integration
 Plug 'airblade/vim-gitgutter'
 
 Plug 'vimwiki/vimwiki'
@@ -57,6 +60,9 @@ let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
       \ 'right': [ [ 'close' ] ] }
 
+
+" Plugin config for: Nerdtree {{{2
+map <C-n> :NERDTreeToggle<CR>
 
 " Plugin config for: vimwiki {{{2
 let wiki_iteratec = {}
