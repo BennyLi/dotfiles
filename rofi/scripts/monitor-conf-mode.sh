@@ -3,7 +3,7 @@
 list_monitors()
 {
   xrandr --current | sed -rn 's/^([a-zA-Z0-9\-]*)\sconnected.*$/\1/p' | sort
-  xrandr --current | sed -rn 's/^([a-zA-Z0-9\-]*)\sdisconnected\s[0-9].*$/\1 off/p' | sort
+  xrandr --current | sed -rn 's/^([a-zA-Z0-9\-]*)\sdisconnected\s[0-9].*$/\1/p' | sort
 }
 
 list_connected_monitors()
@@ -11,20 +11,33 @@ list_connected_monitors()
   xrandr --listactivemonitors | grep -v Monitors | sed -nr 's/.*\s([a-zA-Z0-9\-]*)$/\1/p' | sort
 }
 
+is_monitor_connected()
+{
+  local monitor="$1"
+  xrandr --current | sed -rn 's/^([a-zA-Z0-9\-]*)\sconnected.*$/\1/p' | grep "$monitor"
+}
+
 list_positioning_options()
 {
   local monitor="$1"
-
-  for connected_monitor in $(list_connected_monitors)
-  do
-    for rotation in normal inverted left right
+  local monitor_is_connected="$(is_monitor_connected "$monitor")"
+  
+  if [ -n "$monitor_is_connected" ]
+  then
+    for connected_monitor in $(list_connected_monitors)
     do
-      echo $monitor left-of $connected_monitor rotate $rotation
-      echo $monitor above $connected_monitor rotate $rotation
-      echo $monitor right-of $connected_monitor rotate $rotation
-      echo $monitor below $connected_monitor rotate $rotation
+      if [ "$connected_monitor" != "$monitor" ]
+      then
+        for rotation in normal inverted left right
+        do
+          echo $monitor left-of $connected_monitor rotate $rotation
+          echo $monitor above $connected_monitor rotate $rotation
+          echo $monitor right-of $connected_monitor rotate $rotation
+          echo $monitor below $connected_monitor rotate $rotation
+        done
+      fi
     done
-  done
+  fi
 
   echo $monitor off
 }
@@ -56,11 +69,6 @@ apply_configuration()
   local relative_monitor=$(selected_relative_monitor "$configuration")
   local position=$(selected_position "$configuration")
   local rotation=$(selected_rotation "$configuration")
-  echo $configuration
-  echo $monitor
-  echo $relative_monitor
-  echo $position
-  echo $rotation
 
   if [ "off" = "$position" ]
   then

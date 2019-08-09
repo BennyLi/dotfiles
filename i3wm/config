@@ -1,24 +1,20 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# vim: set ft=i3config:
 
 # CONSTANTS {{{1
 set $mod Mod4
 
 # Color Scheme - Nord https://www.nordtheme.com/docs/colors-and-palettes {{{2
+# TODO: Get these values from Xresources: https://i3wm.org/docs/userguide.html#xresources
 set $background         2E3440
 set $textcolor          ECEFF4
-# Dark Grey
 set $textcolor_unfo     B2BABD
-# Signal Blue
-set $border_focused     A3BE8C
-# Signal Red
+set $border_focused     5E81AC
 set $border_urgent      BF616A
-# Orange
 set $border_placeh      D08770
-# Signal Blue
-set $indicator          88C0D0
-# Background Color
+set $indicator          EBCB8B
 set $child_border       4C566A
 
 # Workspaces {{{2
@@ -55,17 +51,18 @@ set $ws_keepass "10:  "
 
 # Style {{{1
 font pango:Hack Nerd Font 9
-for_window [class="^.*"] border pixel 0
+default_border pixel 1
+#for_window [class="^.*"] border pixel 0
 gaps inner 25
 gaps outer 5
 
 # Colors {{{2
-#			            border              backgr.         text                indicator       child_border
-client.focused		    #$border_focused    #$background    #$textcolor         #$indicator     #$child_border
-client.focused_inactive #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
-client.unfocused	    #$background        #$background    #$textcolor_unfo    #$indicator     #$child_border
-client.urgent		    #$border_urgent     #$background    #$textcolor         #$indicator     #$child_border
-client.placeholder	    #$border_placeh     #$background    #$textcolor         #$indicator     #$child_border
+#                           border              backgr.         text                indicator       child_border
+client.focused              #$border_focused    #$background    #$textcolor         #$indicator     #$border_focused
+client.focused_inactive     #$background        #$background    #$textcolor_unfo    #$indicator     #$background
+client.unfocused            #$background        #$background    #$textcolor_unfo    #$indicator     #$background
+client.urgent               #$border_urgent     #$background    #$textcolor         #$indicator     #$border_urgent
+client.placeholder          #$border_placeh     #$background    #$textcolor         #$indicator     #$border_placeh
 
 ## Status bar {{{2
 bar {
@@ -159,7 +156,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 # Shortcuts {{{2
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec terminology #alacritty
 
 # Take a screenshot
 bindsym --release Print exec "scrot --select --exec 'mv $f ~/Pictures/screenshots/'"
@@ -171,9 +168,23 @@ bindsym $mod+Control+v exec /usr/bin/rofimoji
 
 # Open a url or search for on the web including history from qubebrowser
 bindsym $mod+o exec $HOME/.dotfiles/rofi/scripts/open-url.sh
+# Open a saved qutebrowser session or create a new one
+bindsym $mod+Shift+o exec $HOME/.dotfiles/rofi/scripts/open-web-session.sh
+# Open a qutebrowser bookmark
+bindsym $mod+b exec $HOME/.dotfiles/rofi/scripts/open-bookmark.sh
+
+# Get a password from password-store
+bindsym $mod+p exec $HOME/.dotfiles/rofi/scripts/get-pass.sh
+
+# Open Vim Wiki entries directly
+bindsym $mod+Shift+n exec $HOME/.dotfiles/rofi/scripts/open-wiki.sh
 
 # Monitor setup
-bindsym $mod+m exec $HOME/.dotfiles/rofi/scripts/rofi-monitor-mode.sh
+bindsym $mod+Shift+m exec $HOME/.dotfiles/rofi/scripts/monitor-conf-mode.sh
+bindsym $mod+m exec $HOME/.dotfiles/rofi/scripts/monitor-mode.sh
+
+# Lock the screen
+bindsym $mod+Escape exec $HOME/.dotfiles/i3wm/scripts/screen-lock.sh
 
 #bindsym $mod+Shift+m exec rofi -modi "monitor-config:/home/bln/dev/ansible-arch-linux-setup/roles/i3-wm/files/helper/rofi-monitor-conf-mode.sh" -show monitor-config
 ## Move a workspace to another monitor
@@ -181,8 +192,13 @@ bindsym $mod+m exec $HOME/.dotfiles/rofi/scripts/rofi-monitor-mode.sh
 #
 ## Setup the network stack
 # Start a netctl network profile
-#bindsym $mod+n exec /usr/local/bin/rofi-network-select.sh
+bindsym $mod+n exec $HOME/.dotfiles/rofi/scripts/network-select.sh
 #bindsym $mod+m exec /usr/local/bin/rofi-mount-usb-device.sh
+
+
+# Autostart {{{1
+
+exec_always --no-startup-id "/usr/local/bin/change_wallpaper"
 
 
 #####  TODO OLD Stuff from somewhere to be migrated or DELETED {{{1
