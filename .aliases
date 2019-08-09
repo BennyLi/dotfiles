@@ -1,3 +1,13 @@
+# Quick open config files {{{1
+alias ea="vim ~/.aliases"
+alias ev="vim ~/.vimrc"
+alias ei3="vim ~/.config/i3/config"
+alias ez="vim ~/.zshrc"
+alias eb="vim ~/.config/qutebrowser/quickmarks"
+
+# Taskwarrior {{{1
 alias t=task
 alias tin="task add +inbox"
 alias ta="task add"
+
+# vim: set ft=zsh: {{{1
