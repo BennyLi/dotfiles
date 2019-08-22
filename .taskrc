@@ -1,0 +1,68 @@
+# [Created by task 2.5.1 2/19/2019 21:08:36]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+confirmation=no
+editor=vim
+
+# Sync settings
+taskd.certificate=\/home\/benny\/.task\/Benny.cert.pem
+taskd.key=\/home\/benny\/.task\/Benny.key.pem
+taskd.ca=\/home\/benny\/.task\/ca.cert.pem
+taskd.server=tasks.familienunternehmen-lindemann.de:53589
+taskd.credentials=Familienunternehmen Lindemann\/Benny\/c3a6717b-ea84-4e27-bd88-5b2b7296530c
+
+# Urgency
+urgency.user.tag.next.coefficient=15.0   # +next tag
+urgency.due.coefficient=12.0             # overdue or near due date
+urgency.blocking.coefficient=8.0         # blocking other tasks
+urgency.uda.priority.H.coefficient=6.0   # high Priority
+urgency.uda.priority.M.coefficient=3.9   # medium Priority
+urgency.uda.priority.L.coefficient=1.8   # low Priority
+urgency.scheduled.coefficient=5.0        # scheduled tasks
+urgency.active.coefficient=4.0           # already started tasks
+urgency.age.coefficient=0.0              # coefficient for age
+urgency.annotations.coefficient=0.0      # has annotations
+urgency.tags.coefficient=0.0             # has tags
+urgency.project.coefficient=0.0          # assigned to any project
+urgency.waiting.coefficient=-3.0         # waiting task
+urgency.blocked.coefficient=-5.0         # blocked by other tasks
+
+# Reports
+report.next.columns=id,description,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,urgency
+report.next.labels=ID,Description,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Urg
+
+# Color theme (uncomment one to use)
+#include /usr/share/doc/task/rc/light-16.theme
+#include /usr/share/doc/task/rc/light-256.theme
+#include /usr/share/doc/task/rc/dark-16.theme
+#include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-red-256.theme
+#include /usr/share/doc/task/rc/dark-green-256.theme
+#include /usr/share/doc/task/rc/dark-blue-256.theme
+#include /usr/share/doc/task/rc/dark-violets-256.theme
+#include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
+#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/share/doc/task/rc/solarized-light-256.theme
+#include /usr/share/doc/task/rc/no-color.theme
+
+# Tasksh review stuff
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
