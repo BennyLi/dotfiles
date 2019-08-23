@@ -66,7 +66,8 @@ client.placeholder          #$border_placeh     #$background    #$textcolor     
 
 ## Status bar {{{2
 bar {
-  status_command i3blocks
+  font pango:Hack Nerd Font 9
+  status_command SCRIPT_DIR=~/.config/i3blocks/contrib 2>/tmp/i3blocks.err i3blocks -vvv | tee /tmp/i3blocks.out
 
   strip_workspace_numbers yes
   position bottom
