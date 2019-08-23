@@ -5,6 +5,16 @@ alias ei3="vim ~/.config/i3/config"
 alias ez="vim ~/.zshrc"
 alias eb="vim ~/.config/qutebrowser/quickmarks"
 
+# Quickly move to frequently used directories {{{1
+alias cdla="cd ~/Development/laptop/ansible"
+alias cdld="cd ~/Development/laptop/docker-apps"
+alias cd.="cd ~/.dotfiles"
+alias cdi="cd ~/Development/iteratec"
+
+# Directory listings {{{1
+alias ls="lsd --group-dirs first"
+alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
+alias lt="lsd --group-dirs first --date relative --almost-all --human-readable --long --tree"
 # Taskwarrior {{{1
 alias t=task
 alias tin="task add +inbox"
