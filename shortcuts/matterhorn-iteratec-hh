@@ -1,3 +1,4 @@
 #! /usr/bin/env sh
 
-/usr/bin/termite --title="Mattermost Hamburg" --exec='sh -c "/usr/bin/docker run -it --rm -e TZ=Europe/Berlin -v ~/.config/matterhorn/config-iteratec-hh.ini:/etc/matterhorn/config.ini bennyli/matterhorn"'
+/usr/bin/alacritty --title "Mattermost Hamburg" \
+                   --command /bin/sh -c "~/.dotfiles/shortcuts/matterhorn-helper.sh --config ~/.config/matterhorn/config-iteratec-hh.ini --name matterhorn-iteratec-hh" 
