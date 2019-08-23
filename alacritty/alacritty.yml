@@ -11,11 +11,11 @@ window:
     x: 0
     y: 0
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
   dynamic_padding: false
 
-  decorations: none
+  decorations: full
   startup_mode: Windowed
 
   title: Alacritty
