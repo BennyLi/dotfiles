@@ -160,7 +160,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Return exec terminology #alacritty
 
 # Take a screenshot
-bindsym --release Print exec "scrot --select --exec 'mv $f ~/Pictures/screenshots/'"
+bindsym --release Print exec "maim --select | xclip -selection clipboard -t image/png"
+bindsym --release Shift+Print exec "maim --select $HOME/Pictures/screenshots/$(date +%s).png"
 
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+d exec rofi -show window
