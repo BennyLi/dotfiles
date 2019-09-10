@@ -169,7 +169,7 @@ bindsym $mod+Shift+d exec rofi -show window
 bindsym $mod+Control+v exec /usr/bin/rofimoji
 
 # Open a url or search for on the web including history from qubebrowser
-bindsym $mod+o exec $HOME/.dotfiles/rofi/scripts/open-url.sh
+bindsym $mod+o exec /usr/bin/rofi -modi "Search Duden.de:~/.dotfiles/rofi/modi/search-duden.sh#Translate with dict.cc:~/.dotfiles/rofi/modi/search-dictcc.sh#URL or Search:~/.dotfiles/rofi/modi/open-url.sh" -show "URL or Search"
 # Open a saved qutebrowser session or create a new one
 bindsym $mod+Shift+o exec $HOME/.dotfiles/rofi/scripts/open-web-session.sh
 # Open a qutebrowser bookmark
