@@ -11,9 +11,9 @@ else
     if [[ $selection == https* ]]
     then
       # An entry from the history is selected
-      qutebrowser --target=window "$selection"
+      qutebrowser --target=window "$selection" &
     else
-      qutebrowser --target=window "https://www.duden.de/suchen/dudenonline/$selection"
+      qutebrowser --target=window "https://www.duden.de/suchen/dudenonline/$selection" &
     fi
   fi
 fi

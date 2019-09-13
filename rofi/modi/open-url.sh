@@ -8,6 +8,6 @@ else
   selection="$@"
   if [ -n "$selection" ]
   then
-    qutebrowser --target=window "$selection"
+    qutebrowser --target=window "$selection" &
   fi
 fi
