@@ -29,22 +29,22 @@ set $ws_comm_0 "30: 﫯 "
 set $ws_comm_1 "31:  "
 # Development {{{3
 set $ws_dev_0 "40:  "
-set $ws_dev_1 "41:  "
-set $ws_dev_2 "50:  "
+set $ws_dev_1 "41:  "
+set $ws_dev_2 "50:  "
 set $ws_dev_3 "51:  "
 set $ws_dev_4 "60:  "
-set $ws_dev_5 "61:  "
+set $ws_dev_5 "61:  "
 # Business (iteratec) {{{3
 set $ws_business_0 "70:  "
 set $ws_business_1 "71:  "
 # Windows VM {{{3
-set $ws_vm_0 "80:  "
-set $ws_vm_1 "81:  "
+set $ws_vm_0 "80: ﭧ "
+set $ws_vm_1 "81:  "
 # Notes {{{3
-set $ws_notes_0 "90:  "
-set $ws_notes_1 "91:  "
+set $ws_notes_0 "90: ﲊ  "
+set $ws_notes_1 "91:   "
 # Keepass {{{3
-set $ws_keepass "10:  "
+set $ws_keepass "10:   "
 
 
 
@@ -197,6 +197,10 @@ bindsym $mod+Escape exec $HOME/.dotfiles/i3wm/scripts/screen-lock.sh
 bindsym $mod+n exec $HOME/.dotfiles/rofi/scripts/network-select.sh
 #bindsym $mod+m exec /usr/local/bin/rofi-mount-usb-device.sh
 
+## Volume control
+bindsym XF86AudioRaiseVolume exec amixer -q -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -q -D default sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # Autostart {{{1
 
