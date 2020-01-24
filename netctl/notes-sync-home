@@ -1,0 +1,4 @@
+#! /bin/sh
+
+ExecUpPost="env HOME=/home/bln /home/bln/Development/laptop/docker-apps/apps/notes-sync-home/start.sh"
+ExecDownPre="docker stop notes-sync-home"
