@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=gitmoji Reference
+Categories=Network
+Path=/usr/bin
+Exec=bash -c 'firefox-developer-edition --new-window --kiosk https://gitmoji.carloscuesta.me; sleep 0.5; i3-msg "fullscreen toggle"'
+Icon=gitmoji
