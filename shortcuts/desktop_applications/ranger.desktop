@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Ranger
+Categories=System;FileTools
+Path=/usr/bin
+Exec=kitty --name="Ranger" --title="Ranger" "/usr/local/src/ranger/ranger.py" /home/bln
+Icon=ranger
