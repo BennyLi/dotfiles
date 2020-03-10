@@ -1,0 +1,90 @@
+" Plugin configuration {{{1
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"" Manage extensions
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"" Show commands
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"" Find symbol of current document
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"" Search workspace symbols
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"" Do default action for next item.
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"" Do default action for previous item.
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"" Resume latest coc list
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+" Plugin config for: vim-js-pretty-template {{{2
+"autocmd FileType typescript JsPreTmpl
+"autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only. Please see #1 for details.
+
+" Plugin config for: tsuquyomi {{{2
+" nnoremap <leader>td :TsuDefinition<enter>
+" nnoremap <leader>tt :TsuTypeDefinition<enter>
+" nnoremap <leader>tr :TsuReferences<enter>
+" nnoremap <leader>ti :TsuImplementation<enter>
+" nnoremap <leader>tf :TsuSearch<space>
+
+" Plugin config for: nord-vim {{{2
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+"colorscheme nord
+
+" Plugin config for: solorarized theme {{{2
+"syntax enable
+"set background=dark
+" colorscheme solarized
+
+
+
+" Plugin config for: iceberg theme {{{2
+"colorscheme iceberg
+
+" Plugin config for: ayu theme {{{2
+set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+nnoremap <leader>bl :let ayucolor="light"<CR>:colorscheme ayu<CR>
+nnoremap <leader>bm :let ayucolor="mirage"<CR>:colorscheme ayu<CR>
+nnoremap <leader>bd :let ayucolor="dark"<CR>:colorscheme ayu<CR>
+" General settings {{{1
+nnoremap <SPACE> <Nop>
+let mapleader=' '
+
+set number
+set cursorline
+set nowrap
+
+filetype plugin on
+syntax on
+
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+set autoindent
+set smartindent
+
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list
+
+" Splits {{{2
+" see also https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+" Easier movement
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
+" Folding {{{2
+set foldenable
+set foldmethod=marker
+nnoremap <leader><space> za
