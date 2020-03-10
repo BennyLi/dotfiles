@@ -34,6 +34,7 @@ list_positioning_options()
           echo $monitor above $connected_monitor rotate $rotation
           echo $monitor right-of $connected_monitor rotate $rotation
           echo $monitor below $connected_monitor rotate $rotation
+          echo $monitor same-as $connected_monitor rotate $rotation
         done
       fi
     done
@@ -44,22 +45,22 @@ list_positioning_options()
 
 selected_monitor()
 {
-  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\1/p'
+  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|same-as|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\1/p'
 }
 
 selected_relative_monitor()
 {
-  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\3/p'
+  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|same-as|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\3/p'
 }
 
 selected_position()
 {
-  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\2/p' 
+  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|same-as|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\2/p' 
 }
 
 selected_rotation()
 {
-  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\5/p'
+  echo $1 | sed -rn 's/^([a-zA-Z0-9\-]*)\s(left-of|above|right-of|below|same-as|off)\s?([a-zA-Z0-9\-]*)?\s?(rotate)?\s?(.*)$/\5/p'
 }
 
 apply_configuration()
@@ -74,7 +75,7 @@ apply_configuration()
   then
     xrandr --output $monitor --off
   else
-    xrandr --output $monitor --auto --$position $relative_monitor --rotate $rotation
+    xrandr --output $monitor --scale 1x1 --auto --$position $relative_monitor --rotate $rotation
   fi
 
   sleep 1 # Wait for new conf to be applied or we will have some strange background issues

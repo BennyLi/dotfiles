@@ -1,0 +1,35 @@
+#! /usr/bin/env sh
+
+# TODO
+# * How to select keyfiles? => Maybe from the keyring, too! 
+#   `secret-tool lookup database $db keyfile-for $db`
+#   and to store it first
+#   `secret-tool store --label='Keepass Keyfile' database $db keyfile-for $db`
+#
+# * Mount external media if needed
+#   Check for path of keyfile and db and mount if in fstab
+#
+# * Encrypt external media partition / volume
+
+
+
+# ---  Select a database
+db=$(find ~/Documents -type f -name '*.kdbx' | rofi -dmenu -i -p "Select a password database")
+test -n "$db" || exit 1
+
+# TODO https://wiki.archlinux.org/index.php/GNOME/Keyring#Using_the_keyring_outside_GNOME
+#pass=$(secret-tool lookup database "$db")
+#if [ -n "$pass" ]
+#then
+  pass="$(kdialog --password 'Keepass password for $db')"
+  test -n "$pass" || exit 1
+#  echo $pass | secret-tool store database "$db"
+#fi
+
+entry=$(echo $pass | /usr/bin/keepassxc-cli locate --quiet "$db" / | rofi -dmenu -i -p "Select an entry")
+
+attribute=$(echo -e "Password\nUserName\nURL" | rofi -dmenu -i -p "Select the attribute you want to copy")
+value=$(echo $pass | /usr/bin/keepassxc-cli show --quiet --attributes "$attribute" "$db" "$entry")
+
+echo $value | xclip -selection "clipboard"
+#selection=$(echo $pass | | rofi -dmenu -i -p "Select an attribute")
