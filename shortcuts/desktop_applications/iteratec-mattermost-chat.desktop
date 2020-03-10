@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Mattermost Chat
+Categories=Network;Chat;X-iteratec
+Path=/usr/local/bin
+Exec=firefox-dev-kiosk "https://iterachat.iteratec.de/hh/channels/town-square"
+Icon=iteratec-tiger

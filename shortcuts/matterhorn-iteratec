@@ -1,4 +1,0 @@
-#! /usr/bin/env sh
-
-/usr/bin/alacritty --title "Mattermost iteratec" \
-                   --command /bin/sh -c "~/.dotfiles/shortcuts/matterhorn-helper.sh --config ~/.config/matterhorn/config-iteratec.ini --name matterhorn-iteratec" 

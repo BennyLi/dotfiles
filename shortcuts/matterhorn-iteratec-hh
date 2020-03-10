@@ -1,4 +1,0 @@
-#! /usr/bin/env sh
-
-/usr/bin/alacritty --title "Mattermost Hamburg" \
-                   --command /bin/sh -c "~/.dotfiles/shortcuts/matterhorn-helper.sh --config ~/.config/matterhorn/config-iteratec-hh.ini --name matterhorn-iteratec-hh" 
