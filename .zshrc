@@ -28,6 +28,7 @@ bindkey -v
 export TERM="xterm-256color"
 export SHELL="/bin/zsh"
 export EDITOR="vim"
+export DOCKER_APPS_BASE_PATH="$(realpath ~/Development/laptop/docker-apps)"
 source ~/.aliases
 
 
