@@ -4,37 +4,41 @@ color=#4C566A
 separator=false
 separator_block_width=7
 
-[separator]
-
-[docker]
-command=$SCRIPT_DIR/docker/docker
-color=#81A1C1
-interval=10
-label=
+[volume]
+command=$SCRIPT_DIR/volume/volume
+label=🎶
+interval=once
+signal=10
 
 [separator]
 
 [key_layout]
 command=$SCRIPT_DIR/key_layout/key_layout
-label=Layout
+label=
 interval=30
-color=#EBCB8B
+color=#B8CC52
 
 [separator]
 
-[cpu_usage2]
+[docker]
+command=$SCRIPT_DIR/docker/docker
+color=#36A3D9
+interval=10
+label=
+
+[separator]
+
+[cpu_usage]
 command=$SCRIPT_DIR/cpu_usage/cpu_usage
 interval=10
 label=
-color=#A3BE8C
-
-[separator]
+color=#86B300
 
 [memory]
 command=$SCRIPT_DIR/memory/memory
-label=
-interval=30
-color=#A3BE8C
+label=﬙
+interval=10
+color=#86B300
 
 [separator]
 
@@ -42,15 +46,16 @@ color=#A3BE8C
 command=$SCRIPT_DIR/disk/disk
 label=ﴥ
 interval=30
-color=#5E81AC
+color=#36A3D9
 
 [separator]
 
-[time]
-command=date '+%d.%m.%Y %H:%M:%S'
-label=
-interval=1
-color=#5E81AC
+[iface]
+command=$SCRIPT_DIR/iface/iface
+label=ﯱ
+#IFACE=wlan0
+color=#36A3D9
+interval=10
 
 [separator]
 
@@ -58,6 +63,14 @@ color=#5E81AC
 command=$SCRIPT_DIR/battery2/battery2
 markup=pango
 interval=30
-color=#B48EAD
+color=#E6E1CF
+
+[separator]
+
+[time]
+command=date '+%d.%m.%Y %H:%M:%S'
+label=
+interval=1
+color=#E6E1CF
 
 [separator]

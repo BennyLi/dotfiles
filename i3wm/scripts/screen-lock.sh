@@ -12,7 +12,7 @@ if [ ! -e /tmp/i3lock.png ]; then
     monitor_index=$((monitor_index+1))
   done <<< "${ACTIVE_MONITORS}"
 
-  scrot --delay 2 /tmp/i3lock.png && convert /tmp/i3lock.png -blur 0x3 /tmp/i3lock.png
+  maim --window=root --hidecursor --delay 2 | convert - -blur 0x3 /tmp/i3lock.png
 fi
 
-i3lock --show-failed-attempts --image=/tmp/i3lock.png #--no-unlock-indicator
+i3lock --show-failed-attempts --image=/tmp/i3lock.png

@@ -33,7 +33,7 @@ set $ws_dev_1 "41:  "
 set $ws_dev_2 "50:  "
 set $ws_dev_3 "51:  "
 set $ws_dev_4 "60:  "
-set $ws_dev_5 "61:  "
+set $ws_dev_5 "61:  ﭧ "
 # Business (iteratec) {{{3
 set $ws_business_0 "70:  "
 set $ws_business_1 "71:  "
@@ -157,29 +157,21 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 # Shortcuts {{{2
-bindsym $mod+Return exec terminology #alacritty
+bindsym $mod+Return exec termite
 
 # Take a screenshot
 bindsym --release Print exec "maim --select | xclip -selection clipboard -t image/png"
 bindsym --release Shift+Print exec "maim --select $HOME/Pictures/screenshots/$(date +%s).png"
 
-bindsym $mod+d exec rofi -show run
-bindsym $mod+Shift+d exec rofi -show window
+# Launcher
+bindsym $mod+d exec "rofi -modi 'drun,run' -show drun"
+bindsym $mod+Shift+d exec "rofi -show window -modi window"
+
 # Insert emojis with Rofi 🤩
 bindsym $mod+Control+v exec /usr/bin/rofimoji
 
-# Open a url or search for on the web including history from qubebrowser
-bindsym $mod+o exec /usr/bin/rofi -modi "Search Duden.de:~/.dotfiles/rofi/modi/search-duden.sh#Translate with dict.cc:~/.dotfiles/rofi/modi/search-dictcc.sh#URL or Search:~/.dotfiles/rofi/modi/open-url.sh" -show "URL or Search"
-# Open a saved qutebrowser session or create a new one
-bindsym $mod+Shift+o exec $HOME/.dotfiles/rofi/scripts/open-web-session.sh
-# Open a qutebrowser bookmark
-bindsym $mod+b exec $HOME/.dotfiles/rofi/scripts/open-bookmark.sh
-
-# Get a password from password-store
-bindsym $mod+p exec $HOME/.dotfiles/rofi/scripts/get-pass.sh
-
-# Open Vim Wiki entries directly
-bindsym $mod+Shift+n exec $HOME/.dotfiles/rofi/scripts/open-wiki.sh
+# Open a url or search for on the web
+bindsym $mod+o exec $HOME/.dotfiles/rofi/scripts/websearch.sh
 
 # Monitor setup
 bindsym $mod+Shift+m exec $HOME/.dotfiles/rofi/scripts/monitor-conf-mode.sh
@@ -188,14 +180,12 @@ bindsym $mod+m exec $HOME/.dotfiles/rofi/scripts/monitor-mode.sh
 # Lock the screen
 bindsym $mod+Escape exec $HOME/.dotfiles/i3wm/scripts/screen-lock.sh
 
-#bindsym $mod+Shift+m exec rofi -modi "monitor-config:/home/bln/dev/ansible-arch-linux-setup/roles/i3-wm/files/helper/rofi-monitor-conf-mode.sh" -show monitor-config
-## Move a workspace to another monitor
-#bindsym $mod+m exec rofi -modi "monitor:/home/bln/dev/ansible-arch-linux-setup/roles/i3-wm/files/helper/rofi-monitor-mode.sh" -show monitor
-#
+# Change the wallpapers
+bindsym $mod+Shift+w exec /usr/local/bin/change_wallpaper
+
 ## Setup the network stack
 # Start a netctl network profile
 bindsym $mod+n exec $HOME/.dotfiles/rofi/scripts/network-select.sh
-#bindsym $mod+m exec /usr/local/bin/rofi-mount-usb-device.sh
 
 ## Volume control
 bindsym XF86AudioRaiseVolume exec amixer -q -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
