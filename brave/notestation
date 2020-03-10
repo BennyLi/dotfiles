@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-
-brave --disable-extensions --app="https://cloud.familienunternehmen-lindemann.de:5001/?launchApp=SYNO.SDS.NoteStation.Application"

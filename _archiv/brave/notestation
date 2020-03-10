@@ -1,0 +1,9 @@
+#! /usr/bin/env sh
+
+ip link show tun0
+if [ $? -gt 0 ]
+then
+  vpn-home-connect
+fi
+
+brave --disable-extensions --app="https://notizen.familienunternehmen-lindemann.de:9351"
