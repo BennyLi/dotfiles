@@ -10,11 +10,21 @@ alias cdla="cd ~/Development/laptop/ansible"
 alias cdld="cd ~/Development/laptop/docker-apps"
 alias cd.="cd ~/.dotfiles"
 alias cdi="cd ~/Development/iteratec"
+alias cdioo="cd ~/Development/iteratec/osm/OpenSpeedMonitor"
+alias cdiod="cd ~/Development/iteratec/osm/docker-dev-environment"
+alias cdih="cd ~/Development/iteratec/hlag_customer_feedback_app"
 
 # Directory listings {{{1
 alias ls="lsd --group-dirs first"
 alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
 alias lt="lsd --group-dirs first --date relative --almost-all --human-readable --long --tree"
+
+# Docker shortcuts {{{1
+alias di="docker image"
+alias dc="docker container"
+alias dv="docker volume"
+alias dn="docker network"
+
 # Taskwarrior {{{1
 alias t=task
 alias tin="task add +inbox"
