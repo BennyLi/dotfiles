@@ -1,17 +1,38 @@
 add_date_and_time_on_the_right_to_prompt() {
+  RESET_COLORS="\e[0m"
+
+  RED_STEP0_BG="\e[48;2;251;1;30m"
+  RED_STEP1_BG="\e[48;2;206;0;24m"
+  RED_STEP2_BG="\e[48;2;128;0;15m"
+  RED_STEP3_BG="\e[48;2;53;0;6m"
+
+  BLUE_STEP0_BG="\e[48;2;111;180;210m"
+  BLUE_STEP1_BG="\e[48;2;45;123;156m"
+  BLUE_STEP2_BG="\e[48;2;9;80;111m"
+  BLUE_STEP3_BG="\e[48;2;1;44;62m"
+
+  GREY_STEP0_BG="\e[48;2;176;176;176m"
+  GREY_STEP1_BG="\e[48;2;111;111;111m"
+  GREY_STEP2_BG="\e[48;2;70;70;70m"
+  GREY_STEP3_BG="\e[48;2;30;30;30m"
+
+  BLACK265_232_FG="\e[38;5;232m"
+  WHITE265_255_FG_BOLD="\e[1;38;5;255m"
+
   # Source: https://superuser.com/questions/187455/right-align-part-of-prompt/1203400#1203400
 
   local LAST_EXIT_CODE="$1"
 
   if [[ "$LAST_EXIT_CODE" == "0" ]]
   then
-    LAST_EXIT_STRING="✔ "
+    LAST_EXIT_STRING="👌"
   else
-    LAST_EXIT_STRING="\e[48;5;16m \e[48;5;52m \e[48;5;88m \e[48;5;124m $LAST_EXIT_CODE ❌ \e[0m"
+    LAST_EXIT_STRING="$RED_STEP3_BG $RED_STEP2_BG $RED_STEP1_BG $RED_STEP0_BG  $WHITE265_255_FG_BOLD$LAST_EXIT_CODE $RED_STEP0_BG $RED_STEP1_BG $RED_STEP2_BG $RED_STEP3_BG $RESET_COLORS ❌$RESET_COLORS"
   fi
 
-  # Create a string like:  "[ Apr 25 16:06 ]" with time in RED.
-  printf -v PS1RHS "$LAST_EXIT_STRING \e[0m[ \e[0;1;31m%(%b %d %H:%M:%S)T \e[0m]" -1 # -1 is current time
+  # Add the date and time on the right side
+  DATE_AND_TIME_STRING="$GREY_STEP3_BG $GREY_STEP2_BG $GREY_STEP1_BG $GREY_STEP0_BG  🕰  $BLACK265_232_FG%(%b %d %H:%M:%S)T  $RESET_COLORS"
+  printf -v PS1RHS "$LAST_EXIT_STRING $DATE_AND_TIME_STRING" -1 # current time
 
   # Strip ANSI commands before counting length
   # From: https://www.commandlinefu.com/commands/view/12043/remove-color-special-escape-ansi-codes-from-text-with-sed
@@ -37,8 +58,9 @@ setup_prompt() {
 
   # Reset the cursor to the default block before starting any progam
   PS0="\e[2 q"
-  
-  PS1='\W\n $ '
+
+  printf -v WORKDIR "$BLUE_STEP0_BG 🐚 $BLACK265_232_FG\\w > $BLUE_STEP0_BG $BLUE_STEP1_BG $BLUE_STEP2_BG $BLUE_STEP3_BG $RESET_COLORS"
+  PS1="$WORKDIR \n \$ "
   add_date_and_time_on_the_right_to_prompt "$LAST_EXIT"
 
   # Add an extra newline before the prompt to seperate stuff from previous outputs

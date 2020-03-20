@@ -2,22 +2,28 @@
 alias ea="vim ~/.aliases"
 alias ev="vim ~/.vimrc"
 alias ei3="vim ~/.config/i3/config"
-alias ez="vim ~/.zshrc"
-alias eb="vim ~/.config/qutebrowser/quickmarks"
+alias eb="vim ~/.bashrc"
 
 # Quickly move to frequently used directories {{{1
-alias cdla="cd ~/Development/laptop/ansible"
-alias cdld="cd ~/Development/laptop/docker-apps"
+alias cdla="cd ~/.ansible_playbook"
+alias cdld="cd ~/.docker-apps"
 alias cd.="cd ~/.dotfiles"
-alias cdi="cd ~/Development/iteratec"
-alias cdioo="cd ~/Development/iteratec/osm/OpenSpeedMonitor"
-alias cdiod="cd ~/Development/iteratec/osm/docker-dev-environment"
-alias cdih="cd ~/Development/iteratec/hlag_customer_feedback_app"
 
-# Directory listings {{{1
+# iteratec specifics {{{2
+if [ -d ~/Development/iteratec ]
+then
+  alias cdi="cd ~/Development/iteratec"
+  alias cdioo="cd ~/Development/iteratec/osm/OpenSpeedMonitor"
+  alias cdiod="cd ~/Development/iteratec/osm/docker-dev-environment"
+  alias cdih="cd ~/Development/iteratec/hlag_customer_feedback_app"
+fi
+
+# Directory and file listings {{{1
 alias ls="lsd --group-dirs first"
 alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
 alias lt="lsd --group-dirs first --date relative --almost-all --human-readable --long --tree"
+
+alias ccat="pygmentize -O full,style=base16-bright"
 
 # Docker shortcuts {{{1
 alias di="docker image"
@@ -25,9 +31,5 @@ alias dc="docker container"
 alias dv="docker volume"
 alias dn="docker network"
 
-# Taskwarrior {{{1
-alias t=task
-alias tin="task add +inbox"
-alias ta="task add"
 
-# vim: set ft=zsh: {{{1
+# vim: set ft=sh: {{{1
