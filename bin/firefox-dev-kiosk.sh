@@ -34,6 +34,6 @@ done
 
 # We have to wait a while for firefox to initialize the kiosk mode.
 # If we toggle the fullscreen too quick, it will be no kiosk mode window!
-sleep 0.5
+sleep 1.0
 echo "Toggle fullscreen"
 i3-msg "fullscreen toggle"
