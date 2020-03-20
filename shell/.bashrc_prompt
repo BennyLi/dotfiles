@@ -1,0 +1,49 @@
+add_date_and_time_on_the_right_to_prompt() {
+  # Source: https://superuser.com/questions/187455/right-align-part-of-prompt/1203400#1203400
+
+  local LAST_EXIT_CODE="$1"
+
+  if [[ "$LAST_EXIT_CODE" == "0" ]]
+  then
+    LAST_EXIT_STRING="✔ "
+  else
+    LAST_EXIT_STRING="\e[48;5;16m \e[48;5;52m \e[48;5;88m \e[48;5;124m $LAST_EXIT_CODE ❌ \e[0m"
+  fi
+
+  # Create a string like:  "[ Apr 25 16:06 ]" with time in RED.
+  printf -v PS1RHS "$LAST_EXIT_STRING \e[0m[ \e[0;1;31m%(%b %d %H:%M:%S)T \e[0m]" -1 # -1 is current time
+
+  # Strip ANSI commands before counting length
+  # From: https://www.commandlinefu.com/commands/view/12043/remove-color-special-escape-ansi-codes-from-text-with-sed
+  PS1RHS_stripped=$(sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" <<<"$PS1RHS")
+
+  # Reference: https://en.wikipedia.org/wiki/ANSI_escape_code
+  local Save='\e[s' # Save cursor position
+  local Rest='\e[u' # Restore cursor to save point
+
+  # Save cursor position, jump to right hand edge, then go left N columns where
+  # N is the length of the printable RHS string. Print the RHS string, then
+  # return to the saved position and print the LHS prompt.
+
+  # Note: "\[" and "\]" are used so that bash can calculate the number of
+  # printed characters so that the prompt doesn't do strange things when
+  # editing the entered text.
+
+  PS1="\[${Save}\e[${COLUMNS:-$(tput cols)}C\e[${#PS1RHS_stripped}D${PS1RHS}${Rest}\]${PS1}"
+}
+
+setup_prompt() {
+  local LAST_EXIT="$?"             # This needs to be first
+
+  # Reset the cursor to the default block before starting any progam
+  PS0="\e[2 q"
+  
+  PS1='\W\n $ '
+  add_date_and_time_on_the_right_to_prompt "$LAST_EXIT"
+
+  # Add an extra newline before the prompt to seperate stuff from previous outputs
+  PS1="\n$PS1"
+}
+
+PROMPT_COMMAND=setup_prompt
+
