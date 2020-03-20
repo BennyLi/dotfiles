@@ -9,9 +9,12 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Notes and Task Management
-Plug 'vimwiki/vimwiki'
-Plug 'freitass/todo.txt-vim'
+" Modeline
+Plug 'itchyny/lightline.vim'
+
+" Syntax highlighting
+Plug 'mboughaba/i3config.vim'
+
 
 " History {{{2
 "
@@ -33,22 +36,24 @@ call plug#end()
 
 
 
-" Plugin config for: vimwiki {{{2
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-let g:vimwiki_folding = 'expr'
-
-
 " General settings {{{1
 nnoremap <SPACE> <Nop>
 let mapleader=' '
 let maplocalleader=','
 
-set number
-"set cursorline
-set nowrap
-
 filetype plugin on
 syntax on
+
+set number
+" Show a cursor line but only highlight the line number
+set cursorline
+highlight CursorLineNR cterm=bold ctermbg=Yellow
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+" Set the cursor to a blinking beam | in insert mode and to a block otherwise
+autocmd InsertEnter * silent execute "!echo -en \<esc>[5 q"
+autocmd InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
+set nowrap
 
 set shiftwidth=2
 set tabstop=2
