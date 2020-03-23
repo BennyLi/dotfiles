@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Master PDF Editor 4
+Categories=Office;Graphics
+Path=/home/bln/Development/laptop/docker-apps/apps/masterpdfeditor
+Exec=/home/bln/Development/laptop/docker-apps/apps/masterpdfeditor/masterpdfeditor.sh
+Icon=masterpdfeditor4
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;

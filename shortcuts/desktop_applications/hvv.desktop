@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=HVV Fahrplanauskunft
+Categories=Utility;Maps
+Path=/usr/bin
+Exec=chromium --app="https://hvv.de"
+Icon=hvv

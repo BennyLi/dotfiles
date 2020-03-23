@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Presentations 2018
+Categories=Application;Office;Presentation;
+Path=/home/bln/Development/laptop/docker-apps/apps/softmaker-office
+Exec=/home/bln/Development/laptop/docker-apps/apps/softmaker-office/presentations18.sh
+Icon=prl18
+MimeType=application/x-prdx;application/x-prvx;application/x-prsx;application/x-prd;application/x-prv;application/x-prs;application/ppt;application/mspowerpoint;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.ms-powerpoint.presentation.macroenabled.12;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.ms-powerpoint.template.macroEnabled.12;application/vnd.ms-powerpoint.slideshow.macroenabled.12;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
+

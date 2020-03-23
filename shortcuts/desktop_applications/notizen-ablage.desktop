@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Notizen - Ablage
+Categories=TextEditor;
+Path=/usr/bin
+Exec=termite --name="Notizen - Ablage" --title="Emacs" --exec "emacs -nw /home/bln/Documents/Notizen/Ablage.org"
+Icon=emacs
