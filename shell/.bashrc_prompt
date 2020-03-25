@@ -56,9 +56,6 @@ add_date_and_time_on_the_right_to_prompt() {
 setup_prompt() {
   local LAST_EXIT="$?"             # This needs to be first
 
-  # Reset the cursor to the default block before starting any progam
-  PS0="\e[2 q"
-
   printf -v WORKDIR "$BLUE_STEP0_BG 🐚 $BLACK265_232_FG\\w > $BLUE_STEP0_BG $BLUE_STEP1_BG $BLUE_STEP2_BG $BLUE_STEP3_BG $RESET_COLORS"
   PS1="$WORKDIR \n \$ "
   add_date_and_time_on_the_right_to_prompt "$LAST_EXIT"
@@ -67,5 +64,10 @@ setup_prompt() {
   PS1="\n$PS1"
 }
 
-PROMPT_COMMAND=setup_prompt
+# Reset the cursor to the default block before starting any progam
+PS0="\e[2 q"
 
+# Initial prompt setup ...
+setup_prompt
+# ... and after each command
+PROMPT_COMMAND=setup_prompt

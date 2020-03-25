@@ -1,3 +1,5 @@
+$include /etc/inputrc
+
 # Use vim like keybindings and modes
 set editing-mode vi
 # Show the current vi mode in the prompt
@@ -6,3 +8,40 @@ set show-mode-in-prompt on
 set vi-cmd-mode-string "\1\e[2 q\2"
 # Show a beam "|" cursor for insert mode
 set vi-ins-mode-string "\1\e[6 q\2"
+
+
+##### ----- History keybindings {{{1
+$if mode=vi
+  set keymap vi-command
+    # these are for vi-command mode
+    "\e[A": history-search-backward  # Arrow up
+    "\e[B": history-search-forward   # Arrow down
+    j: history-search-forward
+    k: history-search-backward
+  set keymap vi-insert
+    # these are for vi-insert mode
+    "\e[A": history-search-backward  # Arrow up
+    "\e[B": history-search-forward   # Arrow down
+$endif
+
+##### ----- Other keybindings {{{1
+$if mode=vi
+  set keymap vi-insert
+    # Use Ctrl+l to clear the screen in vi-insert mode
+    Control-l: clear-screen
+$endif
+
+##### ----- Tab completion settings {{{1
+# Single Tab completion expanding
+set show-all-if-ambiguous on
+# Color files by types
+set colored-stats on
+# Append char to indicate type
+set visible-stats on
+# Mark symlinked directories
+set mark-symlinked-directories on
+# Color the common prefix
+set colored-completion-prefix on
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix on
+
