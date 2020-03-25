@@ -204,6 +204,7 @@ bindsym XF86AudioMute exec amixer -q -D default sset Master toggle && pkill -RTM
 # Autostart {{{1
 
 exec_always --no-startup-id "/usr/local/bin/change_wallpaper"
+exec_always --no-startup-id "/usr/bin/syncthing-gtk --minimized"
 
 
 #####  TODO OLD Stuff from somewhere to be migrated or DELETED {{{1
