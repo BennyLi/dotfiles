@@ -3,10 +3,12 @@ alias ea="vim ~/.aliases"
 alias ev="vim ~/.vimrc"
 alias ei3="vim ~/.config/i3/config"
 alias eb="vim ~/.bashrc"
+alias err="vim ~/.config/ranger/rc.conf"
+alias ers="vim ~/.config/ranger/scope.sh"
 
 # Quickly move to frequently used directories {{{1
 alias cdla="cd ~/.ansible_playbook"
-alias cdld="cd ~/.docker-apps"
+alias cdld="cd ~/.dockerapps"
 alias cd.="cd ~/.dotfiles"
 
 # iteratec specifics {{{2
