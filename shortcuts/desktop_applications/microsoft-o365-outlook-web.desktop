@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Microsoft Office 365 - Outlook
+GenericName=Mail Client
+Categories=Network;Email;
+Path=/usr/bin
+Exec=chromium --app="https://outlook.office365.com/mail/inbox"
+Icon=o365-outlook

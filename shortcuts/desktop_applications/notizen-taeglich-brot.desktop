@@ -3,5 +3,5 @@ Type=Application
 Name=Notizen - Täglich Brot
 Categories=TextEditor;
 Path=/usr/bin
-Exec=termite --name="Notizen - Täglich Brot" --title="Emacs" --exec "emacs -nw '/home/bln/Documents/Notizen/Täglich Brot.org'"
+Exec=termite --name="Notizen - Täglich Brot" --title="Emacs" --exec "/usr/bin/emacsclient '/home/bln/Dokumente/Notizen/Täglich Brot.org'"
 Icon=emacs
