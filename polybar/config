@@ -28,9 +28,10 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 20
+bottom = true
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
@@ -51,13 +52,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "SauceCodePro Nerd Font Mono:size=10;0"
-;font-1 = @FONT_UNIFONT@:size=8:antialias=false;0
-;font-2 = @FONT_SIJI@;1
+font-0 = "Hack Nerd Font Mono:size=10;0"
+font-1 = "Noto Color Emoji:scale=10"
 
 modules-left = i3
 modules-center = date
-modules-right = wlan battery 
+modules-right = alsa wlan battery
 
 tray-position = right
 tray-padding = 2
@@ -136,7 +136,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -303,12 +303,11 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = "🔉"
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = "🔇"
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
