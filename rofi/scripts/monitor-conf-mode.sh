@@ -1,5 +1,8 @@
 #! /usr/bin/env sh
 
+HOOK_DIR=$HOME/.dotfiles/rofi/hooks
+
+
 list_monitors()
 {
   xrandr --current | sed -rn 's/^([a-zA-Z0-9\-]*)\sconnected.*$/\1/p' | sort
@@ -21,7 +24,7 @@ list_positioning_options()
 {
   local monitor="$1"
   local monitor_is_connected="$(is_monitor_connected "$monitor")"
-  
+
   if [ -n "$monitor_is_connected" ]
   then
     for connected_monitor in $(list_connected_monitors)
@@ -79,11 +82,19 @@ apply_configuration()
   fi
 
   sleep 1 # Wait for new conf to be applied or we will have some strange background issues
-  change_wallpaper
 }
 
-
-
+run_post_hooks()
+{
+  if [ -d $HOOK_DIR ]
+  then
+    for hook in $HOOK_DIR/*
+    do
+      echo "Executing hook $hook"
+      $hook &>/dev/null
+    done
+  fi
+}
 
 selected_monitor=$(list_monitors | rofi -dmenu -i -p "Select a monitor")
 if [ -z "$selected_monitor" ]
@@ -107,3 +118,4 @@ fi
 echo "Selected configuration is $selected_configuration"
 
 apply_configuration "$selected_configuration"
+run_post_hooks
