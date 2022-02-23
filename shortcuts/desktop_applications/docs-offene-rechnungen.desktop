@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Dokumente - Offene Rechnungen
-GenericName=Mayan EDMS
-Categories=System;FileTools;FileManager;Graphics;Scanning;OCR
-Path=/usr/local/bin
-Exec=chromium-app-mode "https://dokumente.familienunternehmen-lindemann.de/#/tags/tags/2/documents/"
-Icon=mayan

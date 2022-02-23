@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-
-~/Development/laptop/docker-apps/apps/synology-drive/start.sh iteratec

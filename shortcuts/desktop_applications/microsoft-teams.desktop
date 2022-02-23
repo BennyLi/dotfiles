@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Microsoft Teams
-Categories=Network;InstantMessaging
-Path=/usr/bin
-Exec=chromium --app="https://teams.microsoft.com"
-Icon=teams

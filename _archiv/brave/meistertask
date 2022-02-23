@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-
-brave --disable-extensions --app="https://meistertask.com/app"
