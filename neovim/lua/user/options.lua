@@ -1,0 +1,42 @@
+-- see :h options
+-- Keep this list alphabetical ordered.
+
+local tabwidth = 4
+vim.opt.autoindent       = true                                  -- indent new lines automatically (see smartindent)
+vim.opt.autoread         = true                                  -- read external changes automatically
+vim.opt.background       = 'dark'                                -- TUI background type
+vim.opt.backspace        = { 'indent', 'start' }                 -- Allow backspace for indention and start of insert, but not for line breaks
+vim.opt.backup           = false                                 -- Don't backup files on write
+vim.opt.belloff          = 'all'                                 -- Don't ring the bell
+vim.opt.breakindent      = true                                  -- Visual indention of wrapped lines
+vim.opt.clipboard        = 'unnamedplus'                         -- Use the system clipboard
+vim.opt.cmdheight        = 2                                     -- more space in the neovim command line for displaying messages
+vim.opt.completeopt      = { 'menuone', 'preview', 'noselect' }  -- Command completion behavior
+vim.opt.confirm          = true                                  -- Confirm on unsaved exit
+vim.opt.cursorline       = true                                  -- Highlight the current line
+vim.opt.expandtab        = true                                  -- Spaces, no Tabs
+--vim.opt.fillchars        = { '' }                                -- TODO Check this out
+vim.opt.history          = 10000                                 -- History of ":" commands
+vim.opt.incsearch        = true                                  -- Highlight search results as you type
+vim.opt.linebreak        = true                                  -- Wrap line more readable (see breakindent and showbreak)
+vim.opt.list             = true                                  -- Show some hidden characters
+vim.opt.modeline         = true                                  -- Status bar at the bottom
+vim.opt.number           = true                                  -- Show line numbers
+vim.opt.numberwidth      = 4                                     -- Min columns for numbers
+vim.opt.relativenumber   = true                                  -- Show line numbers relative to the current line
+vim.opt.scrolloff        = 10                                    -- Lines above or below on edge scrolling
+--vim.opt.shell            = ...                                   -- TODO Check this out
+vim.opt.shiftwidth       = tabwidth                              -- Number of spaces of intend like with >>
+vim.opt.showbreak        = '|--> '                               -- Wrap indicator
+vim.opt.showcmd          = true                                  -- Show command in last line of screen
+vim.opt.showmatch        = true                                  -- Show matching bracket
+vim.opt.showmode         = true                                  -- Display current mode in status line
+vim.opt.showtabline      = 2                                     -- Always show the tabline
+vim.opt.smartindent      = true                                  -- Do smarted indents automatically (see autoindent)
+vim.opt.smarttab         = true                                  -- Remove all spaces from a <Tab> on backspace
+vim.opt.softtabstop      = tabwidth                              -- Number of spaces inserted on <Tab>
+vim.opt.splitbelow       = true                                  -- Open new windows below
+vim.opt.splitright       = true                                  -- Open new windows right
+--vim.opt.tabline          = ''                                    -- TODO Check this out
+vim.opt.tabstop          = tabwidth                              -- Spaces a <Tab> counts for
+vim.opt.wrap             = true                                  -- Wrap long lines
