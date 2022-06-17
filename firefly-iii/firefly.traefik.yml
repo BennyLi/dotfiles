@@ -1,0 +1,30 @@
+---
+
+http:
+  middlewares:
+    firefly-app-to-https-redirect:
+      redirectscheme:
+        scheme:    'https'
+        permanent: true
+    firefly-app-ipwhitelist:
+      ipwhitelist:
+        sourcerange: '127.0.0.1/32, {{ traefik_localnet_whitelist }}'
+
+  routers:
+    firefly-app-router:
+      entrypoints: 'http'
+      middlewares: 'firefly-app-to-https-redirect'
+      rule:        'Host(`{{ firefly_hostname }}`)'
+    firefly-app-secure-router:
+      entrypoints: 'https'
+      middlewares: 'firefly-app-ipwhitelist,secHeaders@file'
+      rule:        'Host(`{{ firefly_hostname }}`)'
+      service:     'firefly-app'
+      tls:
+        certresolver: 'http'
+
+  services:
+    firefly-app:
+      loadbalancer:
+        servers:
+          - url: 'http://firefly:8080/'
