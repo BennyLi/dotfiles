@@ -1,0 +1,30 @@
+---
+
+http:
+  middlewares:
+    pihole-app-to-https-redirect:
+      redirectscheme:
+        scheme:    'https'
+        permanent: true
+    pihole-app-ipwhitelist:
+      ipwhitelist:
+        sourcerange: '127.0.0.1/32, {{ traefik_localnet_whitelist }}'
+
+  routers:
+    pihole-app-router:
+      entrypoints: 'http'
+      middlewares: 'pihole-app-to-https-redirect'
+      rule:        'Host(`{{ pihole_hostname }}`)'
+    pihole-app-secure-router:
+      entrypoints: 'https'
+      middlewares: 'pihole-app-ipwhitelist,secHeaders@file'
+      rule:        'Host(`{{ pihole_hostname }}`)'
+      service:     'pihole-app'
+      tls:
+        certresolver: 'http'
+
+  services:
+    pihole-app:
+      loadbalancer:
+        servers:
+          - url: 'http://pihole/'
