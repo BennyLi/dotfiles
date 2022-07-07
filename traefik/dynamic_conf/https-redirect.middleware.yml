@@ -1,0 +1,7 @@
+---
+
+http:
+  middlewares:
+    https-redirect:
+      redirectscheme:
+        scheme: 'https'

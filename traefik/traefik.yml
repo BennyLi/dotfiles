@@ -1,0 +1,26 @@
+---
+
+log:
+  level: DEBUG
+
+api:
+  dashboard: true
+
+certificatesResolvers:
+  http:
+    acme:
+      email:   '{{ traefik_webmaster_mail_address }}'
+      storage: acme.json
+      httpChallenge:
+        entryPoint: http
+
+entryPoints:
+  http:
+    address: ':80'
+  https:
+    address: ':443'
+
+providers:
+  file:
+    directory: '/dynamic_conf'
+    watch: true

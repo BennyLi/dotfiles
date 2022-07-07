@@ -1,0 +1,19 @@
+---
+
+http:
+  routers:
+    traefik:
+      entrypoints: 'http'
+      middlewares:
+        - 'https-redirect@file'
+      rule: 'Host(`{{ traefik_domain }}`)'
+      service: 'api@internal'
+    traefik-secure:
+      entrypoints: 'https'
+      middlewares:
+        - 'secHeaders@file'
+        - 'traefik-auth@file'
+      rule: 'Host(`{{ traefik_domain }}`)'
+      service: 'api@internal'
+      tls:
+        certresolver: 'http'

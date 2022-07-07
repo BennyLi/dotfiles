@@ -1,0 +1,7 @@
+---
+
+http:
+  middlewares:
+    traefik-auth:
+      basicAuth:
+        usersFile: '{{ traefik_htpasswd_file_path }}'
