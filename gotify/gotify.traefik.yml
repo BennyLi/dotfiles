@@ -1,0 +1,17 @@
+http:
+  routers:
+    gotify-app-secure:
+      entrypoints: 'https'
+      rule: 'Host(`{{ gotify_domain }}`)'
+      middlewares:
+        - 'local-ipwhitelist@file'
+        - 'secHeaders@file'
+      tls:
+        certresolver: 'http'
+      service: 'gotify-app'
+
+  services:
+    gotify-app:
+      loadbalancer:
+        servers:
+          - url: 'http://{{ gotify_app_hostname }}/'
