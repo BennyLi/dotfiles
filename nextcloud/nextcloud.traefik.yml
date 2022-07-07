@@ -1,0 +1,26 @@
+---
+
+http:
+  middlewares:
+    nextcloud-dav:
+      replacePathRegex:
+        regex: '^/.well-known/ca(l|rd)dav'
+        replacement: '/remote.php/dav/'
+
+  routers:
+    nextcloud-app-secure:
+      entrypoints: 'https'
+      rule: 'Host(`{{ nextcloud_domain }}`)'
+      middlewares:
+        - 'local-ipwhitelist@file'
+        - 'nextcloud-dav'
+        - 'secHeaders@file'
+      tls:
+        certresolver: 'http'
+      service: 'nextcloud-app'
+
+  services:
+    nextcloud-app:
+      loadbalancer:
+        servers:
+          - url: 'http://{{ nextcloud_app_hostname }}/'
