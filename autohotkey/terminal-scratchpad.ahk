@@ -24,7 +24,7 @@ terminal_id := ""
 ; hide/show on F1
 F1::
   If WinExist(terminal_title) {
-    WinGet, wt_id, ID, %terminal_title%
+    WinGet, terminal_id, ID, %terminal_title%
     toggle()
   } else {
     init()
@@ -39,7 +39,7 @@ showConsole() {
   global
   WinMove, ahk_id %terminal_id%,, (A_ScreenWidth/2)-(terminal_width/2), (A_ScreenHeight/2)-(terminal_height/2), terminal_width, terminal_height
   WinActivate ahk_id %terminal_id%
-    WinShow ahk_id %wt_id%
+    WinShow ahk_id %terminal_id%
 }
 
 toggle() {
@@ -64,8 +64,8 @@ init() {
 
   WinGet, last_active_id, ID, A
 
-  Run %terminal_app_folder%%terminal_exe%
-  WinWait %terminal_title%
+  Run, %terminal_app_folder%%terminal_exe%
+  WinWait, %terminal_title%
   WinGet, terminal_id, ID, %terminal_title%
   WinHide ahk_id %terminal_id%
 
