@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+#set -o xtrace    # debug mode
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+REPO_BASE_PATH="/c/SPU/tools/tool-belt-win"
+
+. "${REPO_BASE_PATH}/.env"
+export PATH
+
+IFS=$'\n' # Split only on newline
+for path_config in $(cat "$GLOBAL_PATH_CONFIG_FILE")
+do
+  PATH="${path_config}:${PATH}"
+done

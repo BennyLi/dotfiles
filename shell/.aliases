@@ -1,4 +1,58 @@
-# Quick open config files {{{1
+#
+# General aliases
+#
+  alias poweroff="shutdown -s -t 1"
+  alias reboot="shutdown -r -t 1"
+
+  #
+  # Directory and file listings
+  #
+    alias ll="ls -l --almost-all --human-readable"
+    if type lsd >/dev/null
+    then
+      alias ls="lsd --group-dirs first"
+      alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
+      alias lt="lsd --group-dirs first --date relative --almost-all --human-readable --long --tree"
+    fi
+
+  alias ccat="pygmentize -O full,style=base16-bright"
+
+  alias cd.="cd ${HOME}/.dotfiles"
+
+
+
+
+#
+# Apps
+#
+  alias vim="nvim"
+
+
+
+#
+# Online Apps / Bookmarks
+#
+  function chrome-app {
+    # TODO check if chrome is in PATH
+    # command -v chrome
+    /c/Program\ Files/Google/Chrome/Application/chrome --app="$1" & >/dev/null
+  }
+
+  function chrome-new {
+    /c/Program\ Files/Google/Chrome/Application/chrome --new-window "$1" & >/dev/null
+  }
+
+  alias deck="chrome-app \"https://next.boxli.de/apps/deck/#/board/32\""
+
+  #
+  # Search apps
+  #
+    function sd  { chrome-new "https://duckduckgo.com/?q=$1";                    }   # DuckDuckGo
+    function syt { chrome-new "https://www.youtube.com/results?search_query=$1"; }   # YouTube
+
+
+
+# Quick open config files
 alias ea="vim ~/.aliases"
 alias ev="vim ~/.vimrc"
 alias ei3="vim ~/.config/i3/config"
@@ -6,32 +60,18 @@ alias eb="vim ~/.bashrc"
 alias err="vim ~/.config/ranger/rc.conf"
 alias ers="vim ~/.config/ranger/scope.sh"
 
-# Quickly move to frequently used directories {{{1
+# Quickly move to frequently used directories
 alias cdla="cd ~/.ansible_playbook"
 alias cdld="cd ~/.dockerapps"
 alias cd.="cd ~/.dotfiles"
 
-# iteratec specifics {{{2
-if [ -d ~/Development/iteratec ]
-then
-  alias cdi="cd ~/Development/iteratec"
-  alias cdioo="cd ~/Development/iteratec/osm/OpenSpeedMonitor"
-  alias cdiod="cd ~/Development/iteratec/osm/docker-dev-environment"
-  alias cdih="cd ~/Development/iteratec/hlag_customer_feedback_app"
-fi
 
-# Directory and file listings {{{1
-alias ls="lsd --group-dirs first"
-alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
-alias lt="lsd --group-dirs first --date relative --almost-all --human-readable --long --tree"
 
-alias ccat="pygmentize -O full,style=base16-bright"
-
-# Docker shortcuts {{{1
+# Docker shortcuts
 alias di="docker image"
 alias dc="docker container"
 alias dv="docker volume"
 alias dn="docker network"
 
 
-# vim: set ft=sh: {{{1
+# vim: set ft=bash:
