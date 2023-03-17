@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Ranger
+Categories=System;FileTools
+Path=/usr/bin
+Exec={{ terminal_emulator }} --title "Ranger" --command "{{ dockerfiles_path }}/apps/ranger/ranger.sh" "{{ public_dotfiles_path }}/ranger"
+Icon=ranger
