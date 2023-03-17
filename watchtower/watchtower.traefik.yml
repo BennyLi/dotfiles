@@ -1,0 +1,17 @@
+http:
+  routers:
+    watchtower-app-secure:
+      entrypoints: 'https'
+      rule: 'Host(`{{ watchtower_domain }}`)'
+      middlewares:
+        - 'local-ipwhitelist@file'
+        - 'secHeaders@file'
+      tls:
+        certresolver: 'http'
+      service: 'watchtower-app'
+
+  services:
+    watchtower-app:
+      loadbalancer:
+        servers:
+          - url: 'http://{{ watchtower_app_hostname }}/'
