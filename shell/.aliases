@@ -43,6 +43,7 @@
   }
 
   alias deck="chrome-app \"https://next.boxli.de/apps/deck/#/board/32\""
+  alias hass="chrome-app \"http://homeassistant.local:8123\""
 
   #
   # Search apps
