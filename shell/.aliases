@@ -8,7 +8,7 @@
   # Directory and file listings
   #
     alias ll="ls -l --almost-all --human-readable"
-    if type lsd >/dev/null
+    if type lsd &>/dev/null
     then
       alias ls="lsd --group-dirs first"
       alias ll="lsd --group-dirs first --date relative --almost-all --human-readable --long"
@@ -35,11 +35,11 @@
   function chrome-app {
     # TODO check if chrome is in PATH
     # command -v chrome
-    /c/Program\ Files/Google/Chrome/Application/chrome --app="$1" & >/dev/null
+    /c/Program\ Files/Google/Chrome/Application/chrome --app="$1" &>/dev/null
   }
 
   function chrome-new {
-    /c/Program\ Files/Google/Chrome/Application/chrome --new-window "$1" & >/dev/null
+    /c/Program\ Files/Google/Chrome/Application/chrome --new-window "$1" &>/dev/null
   }
 
   alias deck="chrome-app \"https://next.boxli.de/apps/deck/#/board/32\""
