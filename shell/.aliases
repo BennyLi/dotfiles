@@ -7,6 +7,7 @@
   #
   # Directory and file listings
   #
+    alias ls="ls --color"
     alias ll="ls -l --almost-all --human-readable"
     if type lsd &>/dev/null
     then
