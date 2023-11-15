@@ -1,11 +1,3 @@
-# This is Git's per-user configuration file.
-[user]
-	name = Benny Li
-	email = dev@benny-li.de
-
-[credential]
-	helper = cache --timeout=28800 # 8 hours
-
 [alias]
 	fr = !git fetch origin --prune && git rebase   # Clear local branches and rebase the current one
 	p = pull -r                                    # Always do a rebase insted of merge for cleaner logs

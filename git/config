@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Benny Li
+	email = dev@benny-li.de
+
+[credential]
+	helper = cache --timeout=28800 # 8 hours
+
+[include]
+	path = {{ public_dotfiles_path }}/git/aliases
