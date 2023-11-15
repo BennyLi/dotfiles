@@ -15,3 +15,5 @@
 	sp = stash pop
 
 	fuckyou = reset --hard HEAD
+
+# vim: set ft=gitconfig :

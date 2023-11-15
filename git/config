@@ -8,3 +8,5 @@
 
 [include]
 	path = {{ public_dotfiles_path }}/git/aliases
+
+# vim: set ft=gitconfig :
