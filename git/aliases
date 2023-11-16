@@ -1,19 +1,19 @@
 [alias]
-	fr = !git fetch origin --prune && git rebase   # Clear local branches and rebase the current one
-	p = pull -r                                    # Always do a rebase insted of merge for cleaner logs
+  fr = !git fetch origin --prune && git rebase   # Clear local branches and rebase the current one
+  p = pull -r                                    # Always do a rebase insted of merge for cleaner logs
 
-	ll = "!git log --pretty=format:'#<span style=\"color:#fff100;\">commit %h - %ar</span>%nAuthor: %an <%ae>%n%n%s%n%n%b' > /tmp/git.log && pandoc -s -f markdown -t html /tmp/git.log | elinks -dump -dump-color-mode 1 --force-html | less -R"
-	ls = log --decorate=short --abbrev-commit --graph --pretty=oneline
+  ll = "!git log --pretty=format:'#<span style=\"color:#fff100;\">commit %h - %ar</span>%nAuthor: %an <%ae>%n%n%s%n%n%b' > /tmp/git.log && pandoc -s -f markdown -t html /tmp/git.log | elinks -dump -dump-color-mode 1 --force-html | less -R"
+  ls = log --decorate=short --abbrev-commit --graph --pretty=oneline
 
-	co = checkout
-        c = commit -m
-	amend = commit -a --amend --no-edit
+  co = checkout
+  c = commit -m
+  amend = commit -a --amend --no-edit
 
-	s = status
-	ds = diff --staged
-	ss = stash save
-	sp = stash pop
+  s = status
+  ds = diff --staged
+  ss = stash save
+  sp = stash pop
 
-	fuckyou = reset --hard HEAD
+  fuckyou = reset --hard HEAD
 
 # vim: set ft=gitconfig :
