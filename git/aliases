@@ -5,6 +5,7 @@
   ll = "!git log --pretty=format:'#<span style=\"color:#fff100;\">commit %h - %ar</span>%nAuthor: %an <%ae>%n%n%s%n%n%b' > /tmp/git.log && pandoc -s -f markdown -t html /tmp/git.log | elinks -dump -dump-color-mode 1 --force-html | less -R"
   ls = log --decorate=short --abbrev-commit --graph --pretty=oneline
 
+  sw = switch
   co = checkout
   c = commit -m
   amend = commit -a --amend --no-edit
