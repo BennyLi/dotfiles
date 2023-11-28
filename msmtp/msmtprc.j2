@@ -1,0 +1,19 @@
+# Default values for all accounts
+defaults
+auth on
+tls on
+
+# Your private mail account for notifications
+account notifications
+host {{ msmtp_host }}
+from {{ msmtp_from_mail_address }}
+
+port {{ msmtp_port }}
+user {{ msmtp_username }}
+password {{ msmtp_password }}
+
+# Syslog logging with facility LOG_MAIL instead of the default LOG_USER.
+syslog LOG_MAIL
+
+# Set a default account
+account default : notifications

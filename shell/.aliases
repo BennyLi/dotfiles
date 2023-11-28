@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 #
 # General aliases
 #
@@ -26,21 +28,44 @@
 #
 # Apps
 #
-  alias vim="nvim"
+#  alias vim="nvim"
 
 
 
 #
 # Online Apps / Bookmarks
 #
+  function chrome-finder {
+    # Find chrome in common places and pass all arguments to it
+
+    # on Path
+    if type chrome &>/dev/null
+    then
+      chrome "$@"
+      return
+    fi
+
+    # Linux
+    if [ -f /usr/bin/google-chrome ]
+    then
+      /usr/bin/google-chrome "$@"
+    fi
+
+    # Windows
+    if [ -f /c/Program\ Files/Google/Chrome/Application/chrome ]
+    then
+      /c/Program\ Files/Google/Chrome/Application/chrome "$@"
+    fi
+
+    # TODO MacOS
+  }
+    
   function chrome-app {
-    # TODO check if chrome is in PATH
-    # command -v chrome
-    /c/Program\ Files/Google/Chrome/Application/chrome --app="$1" &>/dev/null
+    chrome-finder --app="$1" &>/dev/null
   }
 
   function chrome-new {
-    /c/Program\ Files/Google/Chrome/Application/chrome --new-window "$1" &>/dev/null
+    chrome-finder --new-window "$1" &>/dev/null
   }
 
   alias deck="chrome-app \"https://next.boxli.de/apps/deck/#/board/32\""
@@ -77,4 +102,14 @@ alias dv="docker volume"
 alias dn="docker network"
 
 
-# vim: set ft=bash:
+# Git shortcuts
+alias gti="git" # I always mistype this one...
+alias gs="gitmoji -s"
+
+
+#
+# Windows only aliases
+#
+  alias symlinks-list="cmd //c \"dir /AL /S c:\ \""
+
+# vim: set ft=bash number autoindent expandtab tabstop=2 shiftwidth=2:
