@@ -1,0 +1,4 @@
+[push]
+  autoSetupRemote = true
+
+# vim: set ft=gitconfig :
