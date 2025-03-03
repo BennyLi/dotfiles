@@ -7,7 +7,9 @@
 
   sw = switch
   # Create a new feature branch. The # at the end escapes the user input as the relevant part is already used with $1
-  feat = "!git switch --create \"feature/$1\" #"
+  newfeat = "!git switch --create \"feature/$1\" #"
+  newbug  = "!git switch --create \"bug/$1\" #"
+
   co = checkout
   c = commit -m
   amend = commit -a --amend --no-edit
